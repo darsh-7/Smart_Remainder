@@ -61,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="JAN 01 2020"
+            android:text="DD MM YYYY"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@id/textView2"
@@ -84,11 +84,11 @@
 
         <Button
             android:id="@+id/time"
-            style="?android:spinnerStyle"
+            style="?android:timePickerDialogTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="JAN 01 2020"
+            android:text="00:00"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@id/textView3"
@@ -113,6 +113,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            style="@style/TextAppearance.AppCompat.Menu"
             app:layout_constraintEnd_toEndOf="@id/textView4"
             app:layout_constraintStart_toStartOf="@id/textView4"
             app:layout_constraintTop_toBottomOf="@id/textView4" />
@@ -132,6 +133,7 @@
 
         <EditText
             android:layout_width="0dp"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
