@@ -1,4 +1,4 @@
-package com.example.smartremainder
+package com.example.smartremainder.addRemainder
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -9,9 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.smartremainder.databinding.ActivityMainBinding
+import com.example.smartremainder.MainActivity
+import com.example.smartremainder.R
 import com.example.smartremainder.databinding.FragmentSecondBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -24,11 +27,11 @@ import java.util.Locale
 class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private var _binding: FragmentSecondBinding? = null
-    private lateinit var bindingM: ActivityMainBinding
+    private lateinit var viewModel : addViewModel
 
     private val calendar = Calendar.getInstance()
 
-    private val formatter = SimpleDateFormat("MMMM d, yyyy hh:mm:ss a", Locale.US)
+    private val formatter = SimpleDateFormat("MM d, yyyy hh:mm:ss a", Locale.US)
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -37,10 +40,9 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        viewModel = ViewModelProvider(this).get(addViewModel::class.java)
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        bindingM = ActivityMainBinding.inflate(layoutInflater)
-        binding.date.text = getTodaysDate()
+
 /*
         val dateSetListener =
             OnDateSetListener { datePicker, year, month, day ->
@@ -88,9 +90,24 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
         })
 
 
-        return binding.root
 
+
+
+        return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)?.togBar()
+        binding.date.text = viewModel.getTodaysDate()
+        binding.save.setOnClickListener(View.OnClickListener {
+            viewModel.calendar = calendar
+            viewModel.name= binding.name.text.toString()
+            viewModel.discription = binding.Discription.text.toString()
+
+            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        })
+    }
+
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
         val month = month + 1
@@ -107,24 +124,6 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
         val time: String = "${hourOfDay}:${minute}"
         binding.time.setText(time)
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity?)?.togBar()
-
-        binding.save.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-    }
-
-    private fun getTodaysDate(): String? {
-        val cal: Calendar = Calendar.getInstance()
-        val year: Int = cal.get(Calendar.YEAR)
-        var month: Int = cal.get(Calendar.MONTH)
-        month = month + 1
-        val day: Int = cal.get(Calendar.DAY_OF_MONTH)
-        return "${day}/${month}/${year}"
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         (activity as MainActivity?)?.togBar()

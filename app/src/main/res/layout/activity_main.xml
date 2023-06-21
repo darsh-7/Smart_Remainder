@@ -21,15 +21,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <include
         android:id="@+id/include"
         layout="@layout/content_main"
-        android:layout_width="410dp"
-        android:layout_height="571dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        android:layout_width="416dp"
+        android:layout_height="624dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
