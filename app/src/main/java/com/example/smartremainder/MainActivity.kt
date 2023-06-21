@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    val bindingM get() = binding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
@@ -63,8 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 */
-    public fun togBar(){
-    binding = ActivityMainBinding.inflate(layoutInflater)
+    internal fun togBar(){
     if  (binding.bottomNavigation.isVisible)
         binding.bottomNavigation.visibility= View.INVISIBLE
     else

@@ -1,7 +1,6 @@
 package com.example.smartremainder
 
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +11,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.smartremainder.databinding.ActivityMainBinding
 import com.example.smartremainder.databinding.FragmentSecondBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -24,7 +24,10 @@ import java.util.Locale
 class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private var _binding: FragmentSecondBinding? = null
+    private lateinit var bindingM: ActivityMainBinding
+
     private val calendar = Calendar.getInstance()
+
     private val formatter = SimpleDateFormat("MMMM d, yyyy hh:mm:ss a", Locale.US)
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,6 +39,7 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
     ): View? {
 
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        bindingM = ActivityMainBinding.inflate(layoutInflater)
         binding.date.text = getTodaysDate()
 /*
         val dateSetListener =
@@ -61,6 +65,7 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
 
             }
 */
+
 
         binding.date.setOnClickListener(View.OnClickListener {
             DatePickerDialog(
@@ -104,6 +109,7 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)?.togBar()
 
         binding.save.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
@@ -121,6 +127,7 @@ class SecondFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePicke
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as MainActivity?)?.togBar()
         _binding = null
     }
 }
