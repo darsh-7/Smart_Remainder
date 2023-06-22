@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.navigation.fragment.findNavController
 import com.example.smartremainder.R
 import com.example.smartremainder.databinding.FragmentFirstBinding
@@ -13,11 +16,13 @@ import com.example.smartremainder.databinding.FragmentFirstBinding
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
-
+    val filters = arrayOf<String>("name", "date", "time")
     private var _binding: FragmentFirstBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+/*
+    private lateinit var autoCompleteView : AutoCompleteTextView
+    private lateinit var arrayAdapter : ArrayAdapter<String>
+*/
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,8 +31,18 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
+/*
+        autoCompleteView = binding.autoCompleteText
+        arrayAdapter = ArrayAdapter<String>(container!!.context,R.layout.list_filter,filters)
+        autoCompleteView.setOnItemClickListener(AdapterView.OnItemClickListener(){
 
+        })
+*/
+
+
+
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
