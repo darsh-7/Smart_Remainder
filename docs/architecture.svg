@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <title>Smart Remainder: current architecture</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+  <rect width="800" height="470" rx="16" fill="#FFFFFF"/>
+  <text x="40" y="50" font-size="22" font-weight="700" fill="#111827">Smart Remainder</text>
+  <text x="40" y="76" font-size="14" fill="#4B5563">Work in progress: Navigation Component + ViewModel, Room layer scaffolded</text>
+
+  <!-- MainActivity container -->
+  <rect x="40" y="96" width="720" height="214" rx="14" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="60" y="122" font-size="13" font-weight="700" fill="#7C3AED" letter-spacing="1">MAINACTIVITY</text>
+  <text x="178" y="122" font-size="13" fill="#4B5563">Toolbar · BottomNavigationView · NavHostFragment (nav_graph.xml)</text>
+
+  <!-- FirstFragment -->
+  <rect x="60" y="140" width="250" height="150" rx="12" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="76" y="166" font-size="13" font-weight="700" fill="#7C3AED" letter-spacing="1">HOME · START DESTINATION</text>
+  <text x="76" y="191" font-size="16" font-weight="700" fill="#111827">FirstFragment</text>
+  <text x="76" y="215" font-size="13" fill="#4B5563">“Remainders” screen</text>
+  <text x="76" y="237" font-size="13" fill="#4B5563">FAB (+) opens the add form</text>
+  <text x="76" y="259" font-size="13" fill="#4B5563">Filter dropdown (UI only)</text>
+
+  <!-- SecondFragment -->
+  <rect x="420" y="140" width="320" height="150" rx="12" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="436" y="166" font-size="13" font-weight="700" fill="#7C3AED" letter-spacing="1">ADD REMAINDER</text>
+  <text x="436" y="191" font-size="16" font-weight="700" fill="#111827">SecondFragment</text>
+  <text x="436" y="215" font-size="13" fill="#4B5563">Name · Date · Time · Type · Description</text>
+  <text x="436" y="237" font-size="13" fill="#4B5563">DatePickerDialog + TimePickerDialog</text>
+  <text x="436" y="259" font-size="13" fill="#4B5563">Hides the bottom nav while open</text>
+
+  <!-- Nav arrows -->
+  <line x1="312" y1="190" x2="418" y2="190" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="365" y="182" font-size="13" fill="#111827" text-anchor="middle">tap +</text>
+  <line x1="418" y1="240" x2="312" y2="240" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="365" y="262" font-size="13" fill="#111827" text-anchor="middle">Save</text>
+
+  <!-- ViewModel -->
+  <rect x="420" y="350" width="320" height="96" rx="12" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="436" y="376" font-size="13" font-weight="700" fill="#7C3AED" letter-spacing="1">VIEWMODEL</text>
+  <text x="436" y="400" font-size="16" font-weight="700" fill="#111827">addViewModel</text>
+  <text x="436" y="424" font-size="13" fill="#4B5563">Holds name, description, Calendar (in memory)</text>
+  <line x1="580" y1="292" x2="580" y2="348" stroke="#7C3AED" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="590" y="326" font-size="13" fill="#111827">on Save</text>
+
+  <!-- Room (planned) -->
+  <rect x="60" y="350" width="250" height="96" rx="12" fill="#F9FAFB" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="76" y="376" font-size="13" font-weight="700" fill="#6B7280" letter-spacing="1">PLANNED</text>
+  <text x="76" y="400" font-size="16" font-weight="700" fill="#6B7280">Room: remainders</text>
+  <text x="76" y="424" font-size="13" fill="#6B7280">@Entity only, no DAO / database</text>
+  <line x1="418" y1="398" x2="312" y2="398" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowGrey)"/>
+  <text x="365" y="390" font-size="13" fill="#6B7280" text-anchor="middle">next step</text>
+</svg>
